@@ -1,3 +1,5 @@
+//가장 중요한 함수
+   
 <?php
     session_start();    //세션 실행
     define('DS', DIRECTORY_SEPARATOR);  //define : 상수정의 (이름, 넣을 값)  DIRECTORY_SEPARATOR : 디렉토리 구분자 (ex> \ , /)
