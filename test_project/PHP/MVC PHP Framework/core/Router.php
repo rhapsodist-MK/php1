@@ -26,7 +26,7 @@
                 call_user_func_array([$dispatch, $action], $queryParams); //call a callback with an array of parameters  1인수 : the callable to be called. 2인수 the parameters to be passed to the callback, as an indexed array
                 // == $dispatch->registerAction($queryParams);
             }else{
-                dis('That method does not exist in the controller \"' . $controller_name . '\"');
+                die('That method does not exist in the controller \"' . $controller_name . '\"');
             }
             
         }
