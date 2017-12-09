@@ -108,13 +108,12 @@ $(function () {
         var email = $("#email").val();
         var password = $("#password").val();
         $.ajax({
-            url: "action.php",
+            url: "login.php",
             method: "POST",
             data: {userLogin:1, userEmail:email, userPassword:password},
             success: function(data){
-                alert(data);
+                $("#choose_signin_or_user").html(data);
             }
         });
     });
-
 });

@@ -12,6 +12,13 @@ CREATE TABLE user_info(
 	address2 varchar(200) not null
 ) charset utf8
 
+INSERT INTO user_info(first_name, last_name, email, passwd, mobile, address1, address2) 
+VALUES('MW', 'KIM', 'rhapsodist.mk@gmail.com','rlaals3053', '01066543724', '송파구','잠실동');
+
+SELECT * FROM user_info;
+
+delete from user_info where user_id = 2 ;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 CREATE TABLE products(
 	product_id int(100) auto_increment primary key not null,

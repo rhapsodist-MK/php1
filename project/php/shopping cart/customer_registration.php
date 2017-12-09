@@ -1,7 +1,19 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <?php require_once 'navbar.php' ?>
+<head>
+    <meta charset="UTF-8">
+    <title>mk store</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
 <body>
+    <div id="choose_signin_or_user">
+        <?php require_once 'navbar.php'; ?>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2"></div>
