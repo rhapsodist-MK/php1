@@ -116,3 +116,19 @@
             }
         }
     }
+
+    if(isset($_POST['userLogin'])){
+        $email = $_POST['userEmail'];
+        $password = md5($_POST['userPassword']);
+        $sql = "SELECT * FROM user_info WHERE email='$email' AND password='$password'";
+        $pstmt = $pdo->query($sql);
+        $count = $pstmt->rowCount();
+
+        if($count == 1){
+            $row = $pstmt->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['first_name'] = $row['first_name'];
+
+            echo "user_id"; 
+        }
+    }

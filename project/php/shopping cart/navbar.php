@@ -41,7 +41,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span>
                         SignIn 
                     </a>
@@ -51,7 +51,7 @@
                                 <div class="panel-heading">Login</div>
                                 <div class="panel-heading">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                    <input type="text" class="form-control" id="email" required>
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" id="password" required>
                                     <br>
