@@ -1,3 +1,6 @@
+CREATE DATABASE shoppingcart;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 CREATE TABLE user_info(
 	user_id int(100) auto_increment primary key not null,
 	first_name varchar(300) not null,
@@ -8,9 +11,6 @@ CREATE TABLE user_info(
 	address1 varchar(300) not null,
 	address2 varchar(200) not null
 ) charset utf8
-
-SELECT * FROM user_info;
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 CREATE TABLE products(
@@ -23,10 +23,6 @@ CREATE TABLE products(
 	product_image text,
 	product_keywords text
 ) charset utf8
-
-select * from products;
-
-drop table products;
 
 INSERT INTO products(product_title, product_cat, product_brand, product_price, product_desc, product_image, product_keywords)
 VALUES ('Les Paul Faded T', 1, 2, 848000, 'electric_gibson_Les Paul Faded T 2017', 'electric_gibson_Les Paul Faded T 2017.jpg', 'electric gibson Les Paul Faded T 2017');
