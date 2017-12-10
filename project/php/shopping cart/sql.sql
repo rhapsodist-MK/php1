@@ -90,6 +90,12 @@ create table cart(
 )charset utf8
 
 
+select * from cart;
+
+delete from cart id = 1;
+
+drop table cart;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 create table brand(
@@ -107,3 +113,31 @@ INSERT into brand (brand_title) VALUES('Cort');
 INSERT into brand (brand_title) VALUES('Dame');
 
 SELECT * FROM brand;
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create table customer_order(
+	id int(100) auto_increment primary key not null,
+	user_id int(100) not null,
+	product_id int(100) not null,
+	product_name varchar(300) not null,
+	product_price int(100) not null,
+	product_qty int(100) not null,
+	transaction_id varchar(300) not null
+)charset utf8
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+create table received_payment (
+	id int(100) auto_increment primary key not null,
+	user_id int(100) not null,
+	product_id int(100) not null,
+	amount int(100) not null,
+	transaction_id varchar(300)
+)charset utf8
+
+

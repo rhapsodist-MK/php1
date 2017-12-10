@@ -8,7 +8,7 @@
             <a href="#" class="navbar-brand">MK store</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="index.php" ><span class="glyphicon glyphicon-home"></span>Home</a></li>
             <li><a href="#">Product</a></li>
             <li style="width:300px; left:10px; top:10px;">
                 <input type="text" class="form-control" id="search" placeholder="search">
@@ -16,7 +16,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="#" id="cart_container" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                         Cart
                         <span class="badge">0</span>
@@ -31,7 +31,16 @@
                                 <div class="col-md-3">Price in $.</div>
                             </div>
                         </div>
-                        <div class="panel-body"></div>
+                        <div class="panel-body">
+                            <div id="cart_product">
+                                <!-- <div class="row">
+                                    <div class="col-md-3">Sl.No</div>
+                                    <div class="col-md-3">Product Image</div>
+                                    <div class="col-md-3">product Name</div>
+                                    <div class="col-md-3">Price in $.</div>
+                                </div> -->
+                            </div>
+                        </div>
                         <div class="panel-footer"></div>
                     </div>
                 </div>
@@ -78,7 +87,7 @@
 
 
             <li id="signup">
-                <a href="#">
+                <a href="customer_registration.php">
                     <span class="glyphicon glyphicon-user"></span>
                     SignUp
                 </a>
@@ -95,7 +104,7 @@
                     <?php echo $_SESSION["first_name"] . ' ' . $_SESSION["last_name"]; ?>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" style="text-decoration: none; color: blue;"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+                    <li><a href="cart.php" style="text-decoration: none; color: blue;"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
                     <li class="divider"></li>
                     <li><a href="#" style="text-decoration: none; color: blue;">Change Password</a></li>
                     <li class="divider"></li>
