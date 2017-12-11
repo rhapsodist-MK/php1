@@ -64,8 +64,7 @@ VALUES ('Lilies T100', 2, 5, 116650, 'acoustic_dame_Lilies T100', 'acoustic_dame
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 CREATE TABLE categories(
-	cat_id INT(100) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	cat_title TEXT NOT NULL
+	cat_title TEXT NOT NULL primary key
 ) CHARSET utf8
 
 

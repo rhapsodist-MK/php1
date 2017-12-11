@@ -97,15 +97,20 @@ $(function () {
 
     $("#signup_button").on('click', function (event) {
         event.preventDefault();
+        ajax('checking', $("form").serialize(), $("#signup_msg").html(data));
+    });
+    
+    function ajax(url, data, success){
         $.ajax({
-            url: "register.php",
+            url: url,
             method: "POST",
-            data: $("form").serialize(),
-            success: function (data) {
-                $("#signup_msg").html(data);
+            data: data,
+            success: function(data){
+                success;
             }
         });
-    });
+    }
+    
 
     $("#login").on('click', function(event){
         event.preventDefault();
