@@ -79,7 +79,9 @@
 
     <body>
         <div id="choose_signin_or_user">
-            <?php require_once 'navbar.php'; ?>
+            <?php 
+                require_once 'navbar.php'; 
+            ?>
         </div>
         <br>
         <br>
@@ -91,6 +93,11 @@
 
         <form action="/action_page.php" style="border:1px solid #ccc">
             <div class="container">
+
+                <?php
+                    if(!isset($_SESSION['email'])){
+                ?>
+
                 <label><b>Email</b></label>
                 <input type="text" placeholder="xxxx@xxxx.xxx" id="email" name="email" required>
                 <br>
@@ -98,8 +105,22 @@
                     
                 </div>
                 <br>
+
+                <?php
+                    }else{
+                    
+                ?>
                 
-                
+                <label><b>Email</b></label>
+                <input type="text" placeholder="xxxx@xxxx.xxx" id="email" name="email" value="<?= $_SESSION['email'] ?>" required disabled>
+                <br>
+                <div id="emailcheck">
+                    
+                </div>
+                <br>
+
+                <?php } ?>
+
                 <label><b>Password</b></label>
                 <input type="password" placeholder="Enter password" id="password" name="password" required>
                 <div id="passwordcheck">
@@ -127,10 +148,21 @@
                 <label><b>address</b></label>
                 <input type="text" placeholder="Enter your address" id="address" name="address" required>
                 
-               
                 <div class="clearfix">
                     <button type="button" class="cancelbtn">Cancel</button>
+                    
+
+                    <?php
+                        if(!isset($_SESSION['email'])){
+                    ?>
                     <button type="submit" class="signupbtn">Sign Up</button>
+
+                    <?php
+                        }else{
+                    ?>
+                    <button type="submit" class="updatebtn">Update</button>
+                    
+                    <?php } ?>
                 </div>
             </div>
         </form>

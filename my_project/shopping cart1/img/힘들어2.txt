@@ -1,0 +1,78 @@
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Classic-X V2','Beyond','Electric_Beyond_Classic-X V2.jpg','
+258000','Electric_Beyond_Classic-X V2_det.jpg','electric beyond Classic-X V2','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Modern-T Special BLACK ROTT','Beyond','Electric_Beyond_Modern-T Special BLACK ROTT.jpg','
+385000','Electric_Beyond_Modern-T Special BLACK ROTT_det.jpg','electric beyond Modern-T Special BLACK ROTT','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('FSR','Beyond','Electric_Beyond_FSR.jpg','
+398000','Electric_Beyond_FSR_det.jpg','electric beyond FSR','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('STYLISH CHROME','Beyond','Electric_Beyond_STYLISH CHROME.jpg','
+398000','Electric_Beyond_STYLISH CHROME_det.jpg','electric beyond STYLISH CHROME','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('TS','Beyond','Electric_Beyond_TS.jpg','
+438000','Electric_Beyond_TS_det.jpg','electric beyond TS','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Aggressive Lite','Beyond','Electric_Beyond_Aggressive Lite.jpg','
+486000','Electric_Beyond_Aggressive Lite_det.jpg','electric beyond Aggressive Lite','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Modern-T Standard','Beyond','Electric_Beyond_Modern-T Standard.jpg','
+578000','Electric_Beyond_Modern-T Standard_det.jpg','electric beyond Modern-T Standard','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Golden Blues','Beyond','Electric_Beyond_Golden Blues.jpg','
+598000','Electric_Beyond_Golden Blues_det.jpg','electric beyond Golden Blues','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Golden Cross','Beyond','Electric_Beyond_Golden Cross.jpg','
+678000','Electric_Beyond_Golden Cross_det.jpg','electric beyond Golden Cross','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Aggressive Deluxe','Beyond','Electric_Beyond_Aggressive Deluxe.jpg','
+685000','Electric_Beyond_Aggressive Deluxe_det.jpg','electric beyond Aggressive Deluxe','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('FR Plasma','Beyond','Electric_Beyond_FR Plasma.jpg','
+748000','Electric_Beyond_FR Plasma_det.jpg','electric beyond FR Plasma','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Classic X','Beyond','Electric_Beyond_Classic X.jpg','
+228000','Electric_Beyond_Classic X_det.jpg','electric beyond Classic X','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Mutant','Beyond','Electric_Beyond_Mutant.jpg','
+620000','Electric_Beyond_Mutant_det.jpg','electric beyond Mutant','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('60 Classic','Beyond','Electric_Beyond_60 Classic.jpg','
+693000','Electric_Beyond_60 Classic_det.jpg','electric beyond 60 Classic','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('LZ-EX','Beyond','Electric_Beyond_LZ-EX.jpg','
+748000','Electric_Beyond_LZ-EX_det.jpg','electric beyond LZ-EX','Electric Guitar');
+
+
+INSERT INTO product(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
+VALUES('Thru-Neck TB','Beyond','Electric_Beyond_Thru-Neck TB.jpg','
+1130000','Electric_Beyond_Thru-Neck TB_det.jpg','electric beyond Thru-Neck TB','Electric Guitar');

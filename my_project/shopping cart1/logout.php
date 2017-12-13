@@ -3,6 +3,6 @@
 	session_start();
 	
 	unset($_SESSION['name']);
-	unset($_SESSION['last_name']);
+	unset($_SESSION['email']);
 
 	header("location:index.php");

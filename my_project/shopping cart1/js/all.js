@@ -1,44 +1,62 @@
     $(function () {
-    product();
+    
     categories();
     go_to_buy();
     page();
     cart_container();
     cart_count();
+    brand();
+    product();
 
 
-    $("body").on("click", ".category", function (event) {
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////brand item list////////////////////////////////////////////////////////
+
+
+    $("body").on('click', '.brand', function(event){
         event.preventDefault();
-        var cat_id = $(this).attr('name');
-        $.ajax({
-            url: "action.php",
-            method: "POST",
-            data: {
-                get_selected_Category: 1,
-                cat_id: cat_id
-            },
-            success: function (data) {
-                $("#get_product").html(data);
-            }
-        });
+        var getParameter = function (param) { 
+                                var returnValue; 
+                                var url = location.href; 
+                                var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&'); 
+                                for (var i = 0; i < parameters.length; i++){ 
+                                    var varName = parameters[i].split('=')[0]; 
+                                    if (varName.toUpperCase() == param.toUpperCase()){ 
+                                        returnValue = parameters[i].split('=')[1]; 
+                                        return decodeURIComponent(returnValue); 
+                                    } 
+                                } 
+                            }; //get 형식 파라미터 구하기
+        
+        var brand_name = $(this).attr('name');
+        ajax1('action.php', {get_selected_Brand:1, category_title:getParameter('category_title'), brand_name:brand_name}, "#get_product");
+        page(brand_name);
     });
 
 
-    $("body").on("click", ".brand", function (event) {
-        event.preventDefault();
-        var brand_id = $(this).attr('name');
-        $.ajax({
-            url: "action.php",
-            method: "POST",
-            data: {
-                get_selected_Brand: 1,
-                brand_id: brand_id
-            },
-            success: function (data) {
-                $("#get_product").html(data);
-            }
-        });
-    });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////brand list////////////////////////////////////////////////////////
+
+
+    function brand(){
+        var getParameter = function (param) { 
+                                var returnValue; 
+                                var url = location.href; 
+                                var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&'); 
+                                for (var i = 0; i < parameters.length; i++){ 
+                                    var varName = parameters[i].split('=')[0]; 
+                                    if (varName.toUpperCase() == param.toUpperCase()){ 
+                                        returnValue = parameters[i].split('=')[1]; 
+                                        return decodeURIComponent(returnValue); 
+                                    } 
+                                } 
+                            }; //get 형식 파라미터 구하기
+
+        ajax1('action.php', {brand:1, category_title:getParameter('category_title')}, "#get_brand");
+    }
 
 
 
@@ -48,8 +66,22 @@
 
     $("#search").on('keypress', function(){
         var keyword = $("#search").val();
+
+        var getParameter = function (param) { 
+                                var returnValue; 
+                                var url = location.href; 
+                                var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&'); 
+                                for (var i = 0; i < parameters.length; i++){ 
+                                    var varName = parameters[i].split('=')[0]; 
+                                    if (varName.toUpperCase() == param.toUpperCase()){ 
+                                        returnValue = parameters[i].split('=')[1]; 
+                                        return decodeURIComponent(returnValue); 
+                                    } 
+                                } 
+                            }; //get 형식 파라미터 구하기
+
         if(keyword != ""){
-            ajax1('action.php', {search:1, keyword:keyword}, '#get_product');
+            ajax1('action.php', {search:1, keyword:keyword, category_title:getParameter('category_title')}, '#get_product');
         }
     });
 
@@ -67,7 +99,19 @@
     });
 
     function page(){
-        ajax1('action.php', {page:1}, '#pageno');
+        var getParameter = function (param) { 
+                                var returnValue; 
+                                var url = location.href; var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&'); 
+                                for (var i = 0; i < parameters.length; i++){ 
+                                    var varName = parameters[i].split('=')[0]; 
+                                    if (varName.toUpperCase() == param.toUpperCase()){ 
+                                        returnValue = parameters[i].split('=')[1]; 
+                                        return decodeURIComponent(returnValue); 
+                                    } 
+                                } 
+                            }; //get 형식 파라미터 구하기
+                            
+        ajax1('action.php', {page:1, category_title:getParameter('category_title')}, '#pageno');
     }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -147,12 +191,6 @@
         var product_name = $(this).attr('id');
         ajax2('action.php', {addProduct:1, product_name:product_name}, function(data){
             $('#product_msg').html(data);
-            /*$("#badge").animate({
-                width:['toggle', 'swing'],
-                height:['toggle', 'swing'],
-                color: red,
-                opacity: 'toggle'
-            }, 2000, 'linear');*/
             $("#badge").animate({'fontSize':'3em'});
             $("#badge").animate({'fontSize':'1em'});
             cart_container();
@@ -181,6 +219,27 @@
                 categories();
                 cart_container();
                 cart_count();
+
+            ///////////////////////////////////////////////// registration.php 에서 로그인시 index.php로 이동
+                var tmpStr = $(location).attr('href');
+    
+                var cnt = 0;
+                while(true){
+                    cnt = tmpStr.indexOf("/");
+                    if(cnt == -1) break;
+                    tmpStr = tmpStr.substring(cnt+1);
+                }
+
+                while(true){
+                    cnt = tmpStr.indexOf("\\");
+                    if(cnt == -1) break;
+                    tmpStr = tmpStr.substring(cnt+1);
+                }
+
+                if(tmpStr == 'registration.php'){
+                    location.replace('index.php');
+                }
+             /////////////////////////////////////////////////   
             });
     });
 
@@ -224,7 +283,21 @@
 
  ////////////////////////////////////get product///////////////////////////////////  
     function product(){
-        ajax1("action.php", {getProduct:1}, "#get_product");
+
+        var getParameter = function (param) { 
+                                var returnValue; 
+                                var url = location.href; 
+                                var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&'); 
+                                for (var i = 0; i < parameters.length; i++){ 
+                                    var varName = parameters[i].split('=')[0]; 
+                                    if (varName.toUpperCase() == param.toUpperCase()){ 
+                                        returnValue = parameters[i].split('=')[1]; 
+                                        return decodeURIComponent(returnValue); 
+                                    } 
+                                } 
+                            }; //get 형식 파라미터 구하기
+
+        ajax1("action.php", {getProduct:1, category_title:getParameter('category_title')}, "#get_product");
     }
 ////////////////////////////////////////////////////////////////////////////////////// 
     

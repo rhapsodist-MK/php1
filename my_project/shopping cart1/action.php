@@ -3,102 +3,87 @@
 
     require_once 'db_conn.php';
 
+    if(isset($_POST['get_selected_Brand']) || isset($_POST['search'])){
 
+            if(isset($_POST['get_selected_Brand'])){
+                $category_title = $_POST['category_title'];
+                $brand_name = $_POST['brand_name'];
+                $sql = "SELECT * from products WHERE product_brand = '$brand_name' AND product_category = '$category_title'";
+            }elseif(isset($_POST['search'])){
+                $keyword = $_POST['keyword'];
+                $sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
+            }
 
+            $stmt = $pdo->query($sql);
+            $count = $stmt->rowCount();
 
-
-/*    if(isset($_POST['get_selected_Category']) || isset($_POST['get_selected_Brand']) || isset($_POST['search'])){
-        if(isset($_POST['get_selected_Category'])){
-            $cat_id =  $_POST['cat_id'];
-            $sql = "SELECT * from products WHERE product_cat = '$cat_id'";
-        }elseif(isset($_POST['get_selected_Brand'])){
-            $brand_id =  $_POST['brand_id'];
-            $sql = "SELECT * from products WHERE product_brand = '$brand_id'";
-        }elseif(isset($_POST['search'])){
-            $keyword = $_POST['keyword'];
-            $sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
-        }
-        
-        $pstmt = $pdo->query($sql);
-        $count = $pstmt->rowCount();
-
-        if($count > 0){
-            while($row = $pstmt->fetch(PDO::FETCH_ASSOC)){
-                $product_id = $row['product_id'];
-                $product_title = $row['product_title'];
-                $product_image = $row['product_image'];
-                $product_cat = $row['product_cat'];
-                $product_brand = $row['product_brand'];
-                $product_price = $row['product_price'];
-                
-                echo "
-                    <div class='col-md-4'>
-                        <div class='panel panel-info'>
-                            <div class='panel-heading' style='height:50px;'>$product_title</div>
-                            <div class='panel-body'>
-                                <img src='img/$product_image' style='width:100%;height:100%;'>
-                            </div>
-                            <div class='panel-heading'>
-                                $product_price WEN
-                                <button id='$product_id' class='btn btn-danger btn-xs addtocart' style='float:right;'>AddToCart</button>
+            if($count > 0){
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $product_name = $row['product_name'];
+                    $product_image = $row['product_image'];
+                    $product_price = $row['product_price'];
+                    
+                    echo "
+                        <div class='col-md-4'>
+                            <div class='panel panel-info'>
+                                <div class='panel-heading' style='height:50px;'>$product_name</div>
+                                <div class='panel-body'>
+                                    <img src='img/$product_image' style='width:100%;height:100%;'>
+                                </div>
+                                <div class='panel-heading'>
+                                    $product_price WEN
+                                    <button id='$product_name' class='btn btn-danger btn-xs addtocart' style='float:right;'>AddToCart</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ";
+                    ";
+                }
             }
         }
-    }*/
 
 
-        if(isset($_POST['get_selected_Category']) || isset($_POST['get_selected_Brand']) || isset($_POST['search'])){
-        if(isset($_POST['get_selected_Category'])){
-            $cat_id =  $_POST['cat_id'];
-            $sql = "SELECT * from products WHERE product_cat = '$cat_id'";
-        }elseif(isset($_POST['get_selected_Brand'])){
-            $brand_id =  $_POST['brand_id'];
-            $sql = "SELECT * from products WHERE product_brand = '$brand_id'";
-        }elseif(isset($_POST['search'])){
-            $keyword = $_POST['keyword'];
-            $sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
-        }
-        
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////brand list////////////////////////////////////////////////////////////////////////////////
+///
+    if(isset($_POST['brand'])){
+        $category_title= $_POST['category_title'];
+        $sql = "SELECT * FROM brand WHERE category_title = '$category_title'";
         $stmt = $pdo->query($sql);
         $count = $stmt->rowCount();
+
+        echo "
+            <div class='nav nav-pills nav-stacked'>
+                <li class='active'><a href='item_lists.php?category_title=$category_title''><h4>$category_title</h4></a></li>
+        ";
 
         if($count > 0){
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                $product_name = $row['product_name'];
-                $product_image = $row['product_image'];
-                $product_category = $row['product_category'];
-                $product_brand = $row['product_brand'];
-                $product_price = $row['product_price'];
-                
-                echo "
-                    <div class='col-md-4'>
-                        <div class='panel panel-info'>
-                            <div class='panel-heading' style='height:50px;'>$product_name</div>
-                            <div class='panel-body'>
-                                <img src='img/$product_image' style='width:100%;height:100%;'>
-                            </div>
-                            <div class='panel-heading'>
-                                $product_price WEN
-                                <button id='$product_name' class='btn btn-danger btn-xs addtocart' style='float:right;'>AddToCart</button>
-                            </div>
-                        </div>
-                    </div>
-                ";
+                $brand_name = $row['brand_name'];
+
+                echo "<li><a href='#' class='brand' name='$brand_name'>$brand_name</a></li>";
             }
-        }
+            echo "</div>";
+        } 
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////create pageing////////////////////////////////////////////////////////////////////////////////
-
     if(isset($_POST["page"])){
-        $sql = "SELECT * FROM products";
+        if(isset($_POST['category_title'])){
+            $category_title = $_POST['category_title'];
+            $sql = "SELECT * FROM brand WHERE category_title = '$category_title'";
+        }elseif(isset($_POST['brand_name'])){
+            $category_title = $_POST['category_title'];
+            $brand_name = $_POST['category_title'];
+            $sql = "SELECT * from products WHERE product_brand = '$brand_name' AND product_category = '$category_title'";
+        }else{
+            $sql = "SELECT * FROM products";
+        }
         $stmt = $pdo->query($sql);
         $count = $stmt->rowCount();
         $pageno = ceil($count/9);
-        
+            
         for($i = 1; $i <= $pageno; $i++){
             echo "
                 <li>
@@ -117,15 +102,15 @@
         $product_name = $_POST['product_name'];
         $product_quantity = $_POST['product_quantity'];
         $product_price = $_POST['product_price'];
-        $name = $_SESSION['name'];
+        $email = $_SESSION['email'];
         
-        $sql = "UPDATE cart SET product_quantity = ?, product_price = ? WHERE name = ? AND product_name = ?";
+        $sql = "UPDATE cart SET product_quantity = ?, product_price = ? WHERE email = ? AND product_name = ?";
 
         $pdo->beginTransaction();
         $pstmt = $pdo->prepare($sql);
         $pstmt->bindValue(1, $product_quantity, PDO::PARAM_INT);
         $pstmt->bindValue(2, $product_price, PDO::PARAM_INT);
-        $pstmt->bindValue(3, $name, PDO::PARAM_STR);
+        $pstmt->bindValue(3, $email, PDO::PARAM_STR);
         $pstmt->bindValue(4, $product_name, PDO::PARAM_STR);
         $pstmt->execute();
 
@@ -145,12 +130,12 @@
 
     if(isset($_POST['removeFromCart'])){
         $product_name = $_POST['product_name'];
-        $name = $_SESSION['name'];
+        $email = $_SESSION['email'];
 
-        $sql = "DELETE FROM cart WHERE name = ? AND product_name = ?";
+        $sql = "DELETE FROM cart WHERE email = ? AND product_name = ?";
         $pdo->beginTransaction();
         $pstmt = $pdo->prepare($sql);
-        $pstmt->bindValue(1, $name, PDO::PARAM_STR);
+        $pstmt->bindValue(1, $email, PDO::PARAM_STR);
         $pstmt->bindValue(2, $product_name, PDO::PARAM_STR);
         $pstmt->execute();
 
@@ -170,9 +155,9 @@
 
 
     if(isset($_POST['cart_count'])){
-        if(isset($_SESSION['name'])){
-            $name = $_SESSION['name'];
-            $sql = "SELECT * FROM cart WHERE name = '$name'";
+        if(isset($_SESSION['email'])){
+            $email = $_SESSION['email'];
+            $sql = "SELECT * FROM cart WHERE email = '$email'";
 
             $stmt = $pdo->query($sql);
             $count = $stmt->rowCount();
@@ -189,10 +174,10 @@
 //////////////////////////////////////////////////addtocart button add product/////////////////////////////////////////
 
     if(isset($_POST['addProduct'])){
-        $name = $_SESSION['name'];
+        $email = $_SESSION['email'];
         $product_name = $_POST['product_name'];
 
-        $sql = "SELECT * FROM cart WHERE product_name = '$product_name' AND name = '$name'";
+        $sql = "SELECT * FROM cart WHERE product_name = '$product_name' AND email = '$email'";
 
         $stmt = $pdo->query($sql);
         $count = $stmt->rowCount();
@@ -203,7 +188,7 @@
             
             $product_quantity += 1;
 
-            $sql = "UPDATE cart SET product_quantity = $product_quantity WHERE product_name = '$product_name' AND name= '$name'";
+            $sql = "UPDATE cart SET product_quantity = $product_quantity WHERE product_name = '$product_name' AND email= '$email'";
             $pdo->beginTransaction();
             $stmt = $pdo->query($sql);
             $stmt->execute();
@@ -219,13 +204,13 @@
             $product_price = $row['product_price'];
             $product_image = $row['product_image'];
 
-            $sql = "INSERT INTO cart(product_name, name, product_image, product_price, product_quantity)
-            VALUES(:product_name, :name, :product_image, :product_price, :product_quantity)";
+            $sql = "INSERT INTO cart(product_name, email, product_image, product_price, product_quantity)
+            VALUES(:product_name, :email, :product_image, :product_price, :product_quantity)";
 
             $pdo->beginTransaction();
             $pstmt = $pdo->prepare($sql);
             $pstmt->bindValue(':product_name', $product_name, PDO::PARAM_STR);
-            $pstmt->bindValue(':name', $name, PDO::PARAM_STR);
+            $pstmt->bindValue(':email', $email, PDO::PARAM_STR);
             $pstmt->bindValue(':product_image', $product_image, PDO::PARAM_STR);
             $pstmt->bindValue(':product_price', $product_price, PDO::PARAM_INT);
             $pstmt->bindValue(':product_quantity', 1, PDO::PARAM_INT);
@@ -238,14 +223,14 @@
 ////////////////////////////////////////////////카트 품목 토글//////////////////////////////////////////////////
 
     if(isset($_POST['get_cart_product']) || isset($_POST["go_to_buy"])){
-        if(!isset($_SESSION['name'])){
+        if(!isset($_SESSION['email'])){
             echo "<b>you have to login first</b>";
             exit();
         }
 
-        $name = $_SESSION['name'];
+        $email = $_SESSION['email'];
 
-        $sql = "SELECT * FROM cart WHERE name = '$name'";
+        $sql = "SELECT * FROM cart WHERE email = '$email'";
         $stmt = $pdo->query($sql);
         $count = $stmt->rowCount();
 
@@ -341,9 +326,18 @@
             $start = 0;
         }
         
-        $sql = "SELECT * FROM products LIMIT $start, $limit";
+
+        if(isset($_POST['category_title'])){
+            $category_title = $_POST['category_title'];
+            $sql = "SELECT * FROM products WHERE product_category = '$category_title' LIMIT $start, $limit";
+        }else{
+            $sql = "SELECT * FROM products LIMIT $start, $limit";
+               
+        }
+
+        
         $stmt = $pdo->query($sql);
-        $count = $stmt->rowCount();
+        $count = $stmt->rowCount(); 
         
         if($count > 0){
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -369,6 +363,9 @@
             }
         }
     }
+
+    
+
 ////////////////////////////////////////////////////////////////////////////////
 
 
@@ -381,7 +378,8 @@
         if($count > 0){
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 $category_title = $row["category_title"];
-                echo "<li><a href='#' name='$category_title'>$category_title</a></li>";
+                $category_id = $row["category_id"];
+                echo "<li><a href='item_lists.php?category_title=$category_title', class='categories_class' name='$category_id'>$category_title</a></li>";
             }
         }
     }

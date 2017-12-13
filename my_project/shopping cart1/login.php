@@ -12,6 +12,7 @@
 
         if($count == 1){
             $row = $pstmt->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['email'] = $row['email'];
             $_SESSION['name'] = $row['name'];
         }
     }

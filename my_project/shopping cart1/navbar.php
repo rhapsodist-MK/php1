@@ -5,7 +5,8 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="index.php" class="navbar-brand">Rhapsodist</a>
+            <a href="index.php"><img src="img/MK_logo.png" style="width: 100px; height: 100%;"></a>
+            <!-- <a href="index.php" class="navbar-brand">Rhapsodist</a> -->
         </div>
         <ul class="nav navbar-nav">
             <input type="text" class="form-control" id="search" placeholder="search" style="width:500px; margin: 10px;">
@@ -45,7 +46,7 @@
             </li>
 
             <?php
-                if(!isset($_SESSION['name'])){
+                if(!isset($_SESSION['email'])){
 
             ?>
 
@@ -105,7 +106,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="go_to_buy.php" style="text-decoration: none; color: blue;"><span class="glyphicon glyphicon-shopping-cart"></span>Go to buy</a></li>
                     <li class="divider"></li>
-                    <li><a href="#" style="text-decoration: none; color: blue;">Change Password</a></li>
+                    <li><a href="registration.php" style="text-decoration: none; color: blue;">Change info</a></li>
                     <li class="divider"></li>
                     <li><a href="logout.php" style="text-decoration: none; color: blue;">Logout</a></li>
                 </ul>
