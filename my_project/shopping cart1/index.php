@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +63,9 @@
         </div>
     </div>
     
-    
+    <?php
+        unset($_SESSION['category_title']);
+    ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-1"></div>

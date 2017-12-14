@@ -3,49 +3,10 @@
 
     require_once 'db_conn.php';
 
-    if(isset($_POST['get_selected_Brand']) || isset($_POST['search'])){
-
-            if(isset($_POST['get_selected_Brand'])){
-                $category_title = $_POST['category_title'];
-                $brand_name = $_POST['brand_name'];
-                $sql = "SELECT * from products WHERE product_brand = '$brand_name' AND product_category = '$category_title'";
-            }elseif(isset($_POST['search'])){
-                $keyword = $_POST['keyword'];
-                $sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
-            }
-
-            $stmt = $pdo->query($sql);
-            $count = $stmt->rowCount();
-
-            if($count > 0){
-                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    $product_name = $row['product_name'];
-                    $product_image = $row['product_image'];
-                    $product_price = $row['product_price'];
-                    
-                    echo "
-                        <div class='col-md-4'>
-                            <div class='panel panel-info'>
-                                <div class='panel-heading' style='height:50px;'>$product_name</div>
-                                <div class='panel-body'>
-                                    <img src='img/$product_image' style='width:100%;height:100%;'>
-                                </div>
-                                <div class='panel-heading'>
-                                    $product_price WEN
-                                    <button id='$product_name' class='btn btn-danger btn-xs addtocart' style='float:right;'>AddToCart</button>
-                                </div>
-                            </div>
-                        </div>
-                    ";
-                }
-            }
-        }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////brand list////////////////////////////////////////////////////////////////////////////////
-///
     if(isset($_POST['brand'])){
         $category_title= $_POST['category_title'];
         $sql = "SELECT * FROM brand WHERE category_title = '$category_title'";
@@ -55,7 +16,10 @@
         echo "
             <div class='nav nav-pills nav-stacked'>
                 <li class='active'><a href='item_lists.php?category_title=$category_title''><h4>$category_title</h4></a></li>
+                
         ";
+
+
 
         if($count > 0){
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -70,13 +34,16 @@
 
 //////////////////////////////////////////////////////////create pageing////////////////////////////////////////////////////////////////////////////////
     if(isset($_POST["page"])){
-        if(isset($_POST['category_title'])){
+        if(isset($_SESSION['brand_name']) && isset($_POST['category_title'])){
             $category_title = $_POST['category_title'];
-            $sql = "SELECT * FROM brand WHERE category_title = '$category_title'";
-        }elseif(isset($_POST['brand_name'])){
-            $category_title = $_POST['category_title'];
-            $brand_name = $_POST['category_title'];
+            $category_title = str_replace('#','',$category_title);
+            $brand_name = $_SESSION['brand_name'];
             $sql = "SELECT * from products WHERE product_brand = '$brand_name' AND product_category = '$category_title'";
+
+        }elseif(isset($_POST['category_title'])){
+            $category_title = $_POST['category_title'];
+            $category_title = str_replace('#','',$category_title);
+            $sql = "SELECT * FROM products WHERE product_category = '$category_title'";
         }else{
             $sql = "SELECT * FROM products";
         }
@@ -310,12 +277,23 @@
             }
         }
     }
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////상품가져오기/////////////////////////////////////////////////
 
 
-    if(isset($_POST["getProduct"])){
+    if(isset($_POST["getProduct"]) || isset($_POST['get_selected_Brand']) || isset($_POST['search']) || isset($_POST['setPage'])){
+        $brand_name;
+        if(isset($_POST['brand_name'])){
+            $brand_name = $_POST['brand_name'];
+            $_SESSION['brand_name'] = $brand_name;
+        }        
+
         $limit = 9;
         
         //페이지 넘기기
@@ -325,14 +303,25 @@
         }else{
             $start = 0;
         }
-        
 
-        if(isset($_POST['category_title'])){
+        if(isset($_POST['search'])){
+                $keyword = $_POST['keyword'];
+                $sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
+        }elseif(isset($_POST['get_selected_Brand']) || (isset($_SESSION['brand_name']) && isset($_SESSION['category_title']))){
+                $category_title = $_POST['category_title'];
+                $category_title = str_replace('#','',$category_title);
+                if($_SESSION['brand_name']){
+                    $brand_name = $_SESSION['brand_name'];
+                }
+                
+                $sql = "SELECT * from products WHERE product_brand = '$brand_name' AND product_category = '$category_title' LIMIT $start, $limit";
+        }elseif(isset($_POST['category_title']) || isset($_SESSION['category_title'])){
             $category_title = $_POST['category_title'];
+            $category_title = str_replace('#','',$category_title);
+            $_SESSION['category_title'] = $category_title;
             $sql = "SELECT * FROM products WHERE product_category = '$category_title' LIMIT $start, $limit";
         }else{
-            $sql = "SELECT * FROM products LIMIT $start, $limit";
-               
+            $sql = "SELECT * FROM products LIMIT $start, $limit";     
         }
 
         
@@ -364,7 +353,6 @@
         }
     }
 
-    
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -380,6 +368,7 @@
                 $category_title = $row["category_title"];
                 $category_id = $row["category_id"];
                 echo "<li><a href='item_lists.php?category_title=$category_title', class='categories_class' name='$category_id'>$category_title</a></li>";
+               /* echo "<li><a href='#' class='categories_class' name='$category_id'>$category_title</a></li>";*/
             }
         }
     }

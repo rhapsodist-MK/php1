@@ -34,42 +34,6 @@
     <div id="choose_signin_or_user">
         <?php require_once 'navbar.php'; ?>
     </div>
-    <br><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>rhapsodist</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        
-        .container, .carousel{
-            margin: 0;
-            padding: 0;
-            width:100%;
-            height: 700px; 
-        }
-        
-        .carousel-inner, .carousel-inner .item, .carousel-inner .item img{
-            width: 100%;
-            height: 100%;
-        }
-
-        #login-drop{
-            width: 500px;
-        }
-
-    </style>
-</head>
-    
-<body>
-    <div id="choose_signin_or_user">
-        <?php require_once 'navbar.php'; ?>
-    </div>    
     <br>
     <br>
     <br>
@@ -77,7 +41,9 @@
     <br>
     <br>
 
-    
+    <?php
+        unset($_SESSION['brand_name']);
+    ?>
     <div class="container-fluid">
         <div class="row">
 
@@ -101,7 +67,7 @@
                 <div class="panel panel-info">
                     <div class="panel-heading" >Products</div>
                     <div class="panel-body">
-                        <div id="get_product">
+                        <div id="get_product_list">
                             
                         </div>
                         <!--<div class="col-md-4">

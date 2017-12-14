@@ -26,7 +26,7 @@
                                 <div class="col-md-1">Sl.No</div>
                                 <div class="col-md-3">Product Image</div>
                                 <div class="col-md-3">product Name</div>
-                                <div class="col-md-3">Price in $.</div>
+                                <div class="col-md-3">Price</div>
                                 <div class="col-md-2">quantity</div>
                             </div>
                         </div>
@@ -36,7 +36,8 @@
                                     <div class="col-md-3">Sl.No</div>
                                     <div class="col-md-3">Product Image</div>
                                     <div class="col-md-3">product Name</div>
-                                    <div class="col-md-3">Price in $.</div>
+                                    <div class="col-md-3">Price</div>
+                                    <div class="col-md-2">quantity</div>
                                 </div> -->
                             </div>
                         </div>
