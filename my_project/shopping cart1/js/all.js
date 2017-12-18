@@ -203,7 +203,13 @@
         ajax1('register.php', $('form').serialize(), "#successcheck");
         alert('signed up sccessfuly');
         location.href = 'index.php';
+    });
 
+    $('.updatebtn').on('click', function(event){
+        event.preventDefault();
+        ajax1('update_info.php', $('form').serialize(), "#successcheck");
+        alert('your information is updated');
+        location.href = 'index.php';
     });
     
     $('form').find('#email').on('blur', function(event){

@@ -140,7 +140,7 @@
 
 //////////////////////////////////////////////////addtocart button add product/////////////////////////////////////////
 
-    if(isset($_POST['addProduct'])){
+    if(isset($_POST['addProduct']) && isset($_SESSION['email'])){
         $email = $_SESSION['email'];
         $product_name = $_POST['product_name'];
 

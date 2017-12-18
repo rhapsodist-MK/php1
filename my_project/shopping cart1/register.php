@@ -7,10 +7,10 @@
     $mobile = $_POST['mobile'];
     $address = $_POST['address'];
 
-
-    $pdo->beginTransaction();
     $sql = "INSERT INTO user_info(name, email, passwd, mobile, address) 
             VALUES(:name, :email, :password, :mobile, :address);";
+
+    $pdo->beginTransaction();
     $pstmt = $pdo->prepare($sql);
     $pstmt->bindValue(':name', $name, PDO::PARAM_STR);
     $pstmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -19,3 +19,5 @@
     $pstmt->bindValue(':address', $address, PDO::PARAM_STR);
     $pstmt->execute();
     $pdo->commit();
+
+
