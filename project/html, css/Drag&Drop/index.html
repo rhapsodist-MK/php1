@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+	<style type="text/css">
+		body{
+			background: rgb(255, 246, 231);
+		}
+
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: 'Roboto Slab', serif;
+		}
+
+		#dragDrop{
+			width: 1000px;
+			margin: 20px auto 0;
+			position: relative;
+		}
+		
+		.dd-vc{
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.dd-slot{
+			float: left;
+			outline: 2px dashed rgba(54, 86, 132, 0.75);
+			outline-offset: -15px;
+			position: relative;
+		}
+
+		.dd-slot-num{
+			text-align: center;
+			width: 100%;
+			position: absolute;
+			font-size: 40px;
+			color: rgba(0,0,0,0.1);
+		}
+
+		
+
+		
+
+	</style>
+</head>
+<body>
+	<div id="dragDrop">
+		
+	</div>
+
+	<script type="text/javascript">
+		(function (){
+			var _doc = window.document;	//document 객체에 편하게 접근하기위한 변수
+			var _numOfImageSlots = 12;	//총 슬롯의 갯수
+			var _numOfImagesPerRow = 3;	// 행별 슬롯 갯수
+			var _imageMarginBottom = 30; //각 행별 마진
+
+			var _imageAspectWidth = 1920;
+			var _imageAspectHeight = 1080;
+
+
+			function init(){
+				addImageSlots();
+			}
+
+			function addImageSlots(){	//몇개의 슬롯을 설정 할것이냐
+				var i = 0;
+				var len = _numOfImageSlots;
+				var item;
+				var wrap = _doc.getElementById('dragDrop');	//dragDrop 아이디의 div를 불러옴
+
+
+				for( ; i < len; i++){	//슬롯 생성
+					item = _doc.createElement('div'); 
+
+					item.setAttribute('class', 'dd-slot');
+					item.setAttribute('style', 'width:' + (100 / _numOfImagesPerRow) + '%;padding-bottom:' + (100 / _numOfImagesPerRow) * (_imageAspectHeight / _imageAspectWidth) + '%; margint-bottom:' + _imageMarginBottom +'px;');
+
+					item.innerHTML = '<p class="dd-slot-num dd-vc">'+ (i + 1) +'</p>';	//슬롯에 숫자를 표시해줌
+
+					wrap.appendChild(item);
+				}
+			}
+
+			init();
+		})();
+	</script>
+</body>
+</html>
