@@ -2,7 +2,7 @@
     $host = "localhost";
     $db_username = "root";
     $db_password = "";
-    $db_name = "rhapsodist";
+    $db_name = "rhapsodistshopping";
     $db_type = "mysql";
 
     $dsn = "$db_type:host=$host;dbname=$db_name;charset=utf8";

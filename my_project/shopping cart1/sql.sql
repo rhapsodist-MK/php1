@@ -28,7 +28,7 @@ INSERT INTO products(product_name, product_brand, product_image, product_price, 
 VALUES('AD Mini M','Cort','Acoustic_Cort_AD Mini M.jpg',159000,'Acoustic_Cort_AD Mini M_det.jpg','acoustic cort AD Mini M','Acoustic Guitar');
 
 INSERT INTO products(product_name, product_category, product_brand, product_price, product_detail_img, product_image, product_keywords)
-VALUES ('Les Paul Faded T', 'Elec	tric Guitar', 'Gibson', 848000, 'Electric_Gibson_Les Paul Faded T 2017_det.jpg', 'Electric_Gibson_Les Paul Faded T 2017.jpg', 'electric gibson Les Paul Faded T 2017');
+VALUES ('Les Paul Faded T', 'Electric Guitar', 'Gibson', 848000, 'Electric_Gibson_Les Paul Faded T 2017_det.jpg', 'Electric_Gibson_Les Paul Faded T 2017.jpg', 'electric gibson Les Paul Faded T 2017');
 
 INSERT INTO products(product_name, product_category, product_brand, product_price, product_detail_img, product_image, product_keywords)
 VALUES ('RG350DXZ', 'Electric Guitar', 'Ibanez', 624000, 'Electric_Ibanez_RG350DXZ_det.jpg', 'Electric_Ibanez_RG350DXZ.jpg', 'electric ibanez RG350DXZ');
@@ -165,10 +165,6 @@ VALUES('LZ-EX','Beyond','Electric_Beyond_LZ-EX.jpg',
 INSERT INTO products(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
 VALUES('Thru-Neck TB','Beyond','Electric_Beyond_Thru-Neck TB.jpg',
 1130000,'Electric_Beyond_Thru-Neck TB_det.jpg','electric beyond Thru-Neck TB','Electric Guitar');
-
-
-
-/////////////////////////////////////////////////////////////////////////
 
 INSERT INTO products(product_name, product_brand, product_image, product_price, product_detail_img, product_keywords, product_category)
 VALUES('C711-BK','C&M','Electric_C&M_C711-BK.jpg',
