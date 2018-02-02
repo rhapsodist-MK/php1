@@ -1,0 +1,17 @@
+#wrap{
+			border: 1px solid #cccccc;
+			width: 1000px;
+			margin: 0 auto;
+		}
+		#wrap #header{
+			text-align: center;
+			height: 200px;
+		}
+		#wrap #section{
+			color: #ffffff;
+			height: 300px;
+		}
+		#wrap #footer{
+			height: 100px;
+			text-align: center;
+		}
