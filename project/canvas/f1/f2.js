@@ -41,6 +41,11 @@ c.stroke();*/
 }*/
 
 
+window.addEventListener('mousemove', function(event){
+	console.log(event);
+});
+
+
 function Circle(x, y, dx, dy, radius){
 	this.x = x;
 	this.y = y;
@@ -90,7 +95,6 @@ function animate(){
 	for(var i = 0; i < circleArray.length; i++){
 		circleArray[i].update();
 	}
-
 }
 
 animate();
