@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>calculator</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="calculater_body">
+        <div id="result_wrap">
+            <div id="result_process">
+                <h3></h3>
+            </div>
+            <div id="result">
+                <h2></h2>
+            </div>
+        </div>
+        <div id="btns">
+            <div id="btn_row1">
+                <div id="btn_row1_1" class="btn">ac</div>
+                <div id="btn_row1_2" class="btn">/</div>
+                <div id="btn_row1_3" class="btn">x</div>
+                <div id="btn_row1_4" class="btn">b</div>
+            </div>
+            <div id="btn_row2">
+                <div id="btn_row2_1" class="btn">7</div>
+                <div id="btn_row2_2" class="btn">6</div>
+                <div id="btn_row2_3" class="btn">9</div>
+                <div id="btn_row2_4" class="btn">%</div>
+            </div>
+            <div id="btn_row3">
+                <div id="btn_row3_1" class="btn">4</div>
+                <div id="btn_row3_2" class="btn">5</div>
+                <div id="btn_row3_3" class="btn">6</div>
+                <div id="btn_row3_4" class="btn">-</div>
+            </div>
+            <div id="btn_row4">
+                <div id="btn_row4_1" class="btn">1</div>
+                <div id="btn_row4_2" class="btn">2</div>
+                <div id="btn_row4_3" class="btn">3</div>
+                <div id="btn_row4_4" class="btn">+</div>
+            </div>
+            <div id="btn_row5">
+                <div id="btn_row5_1" class="btn">0</div>
+                <div id="btn_row5_2" class="btn">.</div>
+                <div id="btn_row5_3" class="btn">()</div>
+                <div id="btn_row5_4" class="btn">=</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        //버튼 중앙정렬
+        var btnsHeight = $('#btns').height();
+        var btnsLineHeight = btnsHeight / 5;
+        $('.btn').css('line-height', btnsLineHeight+'px');
+        
+        
+        
+        var result_process = $('#result_process h3');
+        var result = $('#result h2');
+        
+        var remember = [];
+        var remember_index = 0;
+        
+        
+        var brackets_index = 0; //괄호를 위한 변수
+        var brackets_boolen = false; //'(' : true, ')' : false
+        
+        
+        get_text();
+        
+        //버튼 클릭시 해당 text가 무엇인지
+        function get_text(){
+            var input;
+            $('.btn').click(function(){
+                input = $(this).text();
+                input_process(input);
+            });
+        }
+    
+        
+        //계산과정 출력
+        function printout(){
+            result_process.empty();
+            for(var i = 0; i < remember_index; i++){
+                result_process.append(remember[i]);
+            }
+        }
+        
+
+        //입력 처리
+        function input_process(input){
+            
+            
+            //1.만약 숫자가 아니라면
+            if(isNaN(input)){
+                //1-1-1. ac라면 비움
+                if(input == 'ac'){
+                    remember = [];
+                    remember_index = 0;
+                    brackets_boolen = false;
+                    result.text('');
+                    printout();
+                    
+                //1-1-2. b라면 한개 지움
+                }else if(input == 'b'){
+                    if(remember_index != 0){
+                        remember_index -= 1;
+                        remember.splice(remember_index,1);
+                    }
+                        
+                    printout();
+                    
+                //1-1-5. 괄호 처리    
+                }else if(input == '()'){
+                    if(brackets_boolen == false){
+                        remember[remember_index] = '(';
+                        brackets_boolen = true;
+                    }else{
+                        remember[remember_index] = ')';
+                        brackets_boolen = false;
+                    }
+                    
+                    console.log(remember[remember_index]);
+                    remember_index++;
+                    printout();
+                   
+                //1-1-3. remember 변수에 아무것도 없다면 text출력
+                }else if(remember.length - 1 < 0){
+                    result_process.text('숫자를 먼저 입력해 주세요');
+                
+                //1-1-4. 결과 출력
+                }else if(input == '='){
+                    printout_result();
+                    
+                
+                }else if(input == '%'){
+                
+                }else if(input == '.'){
+
+                
+                // *, /, +, - 처리
+                }else{
+                    reprocess();
+                    remember[remember_index] =' ' + input + ' ';
+                    console.log(remember[remember_index]);
+                    remember_index++;
+                    printout();
+                }
+            
+            //숫자 입력시
+            }else{
+                
+                remember[remember_index] = input;
+                console.log(remember[remember_index]);
+                remember_index++;
+                printout();
+            }
+        }
+        
+        
+        // = 키를 눌렀을 때 결과
+        function printout_result(){
+            var nums = [];
+            var nums_index = 0;
+            var sub_result = 0;
+            var ex = '';
+            
+            //결과 도출 전 결과 초기화
+            result.text('');
+            
+            
+            //숫자와 문자를 구분하여 nums에 저장
+            for(var i = 0; i < remember_index; i++){
+                if(!(isNaN(remember[i]))){
+                    ex += remember[i];
+                    nums[nums_index] = ex * 1;
+                }else{
+                    //제일 처음 괄호가 나오지 않을 경우
+                    if(!isNaN(nums[nums_index]) || nums_index != 0){
+                        nums_index++;    
+                    }
+                    
+                    nums[nums_index] = remember[i];
+                    nums_index++;
+                    
+                    ex = '';
+                }
+            }
+            
+            
+            // 곱하기, 나누기 우선 계산
+            mul_div_procces(nums, sub_result, 0);
+            
+            //계산후 배열내 공백 삭제
+            num_splice(nums);
+            
+            //더하기, 빼기 계산
+            for(var i = 0; i < nums.length; i++){
+                if(nums[i] == ' + '){
+                    sub_result = nums[i-1] + nums[i+1];
+                    nums[i-1] = 'delete';
+                    nums[i] = 'delete';
+                    nums[i+1] = sub_result;
+                }else if(nums[i] == ' - '){
+                    sub_result = nums[i-1] - nums[i+1];
+                    nums[i-1] = 'delete';
+                    nums[i] = 'delete';
+                    nums[i+1] = sub_result;
+                }
+            }
+            
+            //계산후 배열내 공백 삭제
+            num_splice(nums);
+            
+            
+            console.log(nums);
+            result.append(nums[0]);
+            
+        }
+        
+        // 곱하기, 나누기 계산
+        function mul_div_procces(nums, sub_result, i){
+            for(; i < nums.length; i++){
+                if(nums[i] == ' x '){
+                    sub_result = nums[i-1] * nums[i+1];
+                    nums[i-1] = 'delete';
+                    nums[i] = 'delete';
+                    nums[i+1] = sub_result;
+                }else if(nums[i] == ' / '){
+                    sub_result = nums[i-1] / nums[i+1];
+                    nums[i-1] = 'delete';
+                    nums[i] = 'delete';
+                    nums[i+1] = sub_result;
+                }
+            }
+        }
+        
+        //계산후 배열내 공백 삭제
+        function num_splice(nums){
+            for(var i = 0; i < nums.length; i++){
+                if(nums[i] === 'delete'){
+                    nums.splice(i,1);
+                    i = -1;
+                }  
+            }
+        }
+        
+        
+        //결과 도출 후 결과를 가지고 재계산
+        function reprocess(){
+            if(result.text() !== ''){
+                remember[0] = result.text();
+                remember_index = 1;
+                result_process.text(result.text());
+                result.text('');
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>

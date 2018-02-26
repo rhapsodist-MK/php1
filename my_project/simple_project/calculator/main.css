@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#calculater_body{
+    margin: 0 auto;
+    background-color: aquamarine;
+    width: 100%;
+    height: 100vh;
+}
+
+#result_wrap{
+    width: 100%;
+    height: 40%;
+    background-color: bisque;
+}
+
+#btns{
+    width: 100%;
+    height: 60%;
+}
+
+#btn_row1, #btn_row2, #btn_row3, #btn_row4, #btn_row5{
+    overflow: hidden;
+    height: 20%;
+}
+
+#btn_row1 > *, #btn_row2 > *, #btn_row3 > *, #btn_row4 > *, #btn_row5 > *{
+    float: left;
+    border: 1px solid black;
+    width: 25%;
+    box-sizing: border-box;
+    text-align: center;
+    height: 100%;
+}
