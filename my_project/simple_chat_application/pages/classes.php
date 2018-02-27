@@ -125,4 +125,35 @@
             ));
             $pdo->commit();
         }
+        
+        public function DisplayMessage(){
+            require_once 'conn_db.php';
+            
+            $Chatsql = "SELECT * FROM chats ORDER BY ChatId DESC";
+            
+            $Chatpstmt = $pdo->prepare($Chatsql);
+            $Chatpstmt->execute();
+            
+            while($DataChat = $Chatpstmt->fetch(PDO::FETCH_ASSOC)){
+                $Usersql = "SELECT * FROM users WHERE UserId=:UserId";
+                $Userpstmt = $pdo->prepare($Usersql);
+                $Userpstmt->execute(array(
+                    'UserId'=>$DataChat['ChatUserId']
+                ));
+                $DataUser = $Userpstmt->fetch(PDO::FETCH_ASSOC);
+                ?>
+                
+                <span class="UserNameS">
+                    <?php echo $DataUser['UserName']; ?>
+                </span>
+                says :
+                <br>
+                <span class="ChatMessageS">
+                    <?php echo $DataChat['ChatText']; ?>
+                </span>
+                <br>
+                <?php
+            }
+            
+        }
     }

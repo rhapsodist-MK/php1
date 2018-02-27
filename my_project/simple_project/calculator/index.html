@@ -183,33 +183,62 @@
                     }
                     
                     nums[nums_index] = remember[i];
-                    nums_index++;
+                    
+                    if(!(nums[nums_index] == ')'))
+                        nums_index++;
                     
                     ex = '';
                 }
             }
             
+            console.log(nums);
+            
+            for(var i = 0; i < nums_index; i++){
+                if(nums[i] == '('){
+                    for(var j = i; j < nums_index; j++){
+                        if(nums[j] == ')'){
+                            mul_div_procces(nums, sub_result, i, j);
+                            
+                            console.log(nums);
+                            j = num_splice(nums, j);
+                            
+                            console.log(nums);
+                            sum_sub_process(nums, sub_result, i, j);
+                            console.log(j);
+                            
+                            console.log(nums);
+                            j = num_splice(nums, j);
+                            nums[i] = 'delete';
+                            nums[j] = 'delete';
+                            num_splice(nums);
+                            console.log(nums);
+     
+                        }
+                        
+                    }
+                    
+                    /*for(var j = i; j < nums_index; j++){
+                        if(nums[j] == ')'){
+                            nums[i] = 'delete';
+                            nums[j] = 'delete';
+                            num_splice(nums);
+                            console.log(nums);
+                            
+                        }
+                        
+                    }*/
+                }
+            }
+            
             
             // 곱하기, 나누기 우선 계산
-            mul_div_procces(nums, sub_result, 0);
+            mul_div_procces(nums, sub_result, 0, nums.length);
             
             //계산후 배열내 공백 삭제
             num_splice(nums);
             
             //더하기, 빼기 계산
-            for(var i = 0; i < nums.length; i++){
-                if(nums[i] == ' + '){
-                    sub_result = nums[i-1] + nums[i+1];
-                    nums[i-1] = 'delete';
-                    nums[i] = 'delete';
-                    nums[i+1] = sub_result;
-                }else if(nums[i] == ' - '){
-                    sub_result = nums[i-1] - nums[i+1];
-                    nums[i-1] = 'delete';
-                    nums[i] = 'delete';
-                    nums[i+1] = sub_result;
-                }
-            }
+            sum_sub_process(nums, sub_result, 0, nums.length);
             
             //계산후 배열내 공백 삭제
             num_splice(nums);
@@ -221,8 +250,8 @@
         }
         
         // 곱하기, 나누기 계산
-        function mul_div_procces(nums, sub_result, i){
-            for(; i < nums.length; i++){
+        function mul_div_procces(nums, sub_result, i, j){
+            for(; i < j; i++){
                 if(nums[i] == ' x '){
                     sub_result = nums[i-1] * nums[i+1];
                     nums[i-1] = 'delete';
@@ -237,14 +266,32 @@
             }
         }
         
+        function sum_sub_process(nums, sub_result, i, j){
+            for(; i < j; i++){
+                if(nums[i] == ' + '){
+                    sub_result = nums[i-1] + nums[i+1];
+                    nums[i-1] = 'delete';
+                    nums[i] = 'delete';
+                    nums[i+1] = sub_result;
+                }else if(nums[i] == ' - '){
+                    sub_result = nums[i-1] - nums[i+1];
+                    nums[i-1] = 'delete';
+                    nums[i] = 'delete';
+                    nums[i+1] = sub_result;
+                }
+            }
+        }
+        
         //계산후 배열내 공백 삭제
-        function num_splice(nums){
+        function num_splice(nums, j){
             for(var i = 0; i < nums.length; i++){
                 if(nums[i] === 'delete'){
                     nums.splice(i,1);
                     i = -1;
+                    j -= 1;
                 }  
             }
+            return j;
         }
         
         

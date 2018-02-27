@@ -12,12 +12,13 @@ create table users(
 
 create table chats(
 	ChatId int primary key auto_increment,
-	CharUserId int,
+	ChatUserId int,
 	ChatText text
 )charset utf8
 
 
 drop table users
+drop table chats
 
 select * from users
 

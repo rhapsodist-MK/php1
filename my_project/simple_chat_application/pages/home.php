@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
-    <h2>Welcome <span style="color:green"><?php echo $_SESSION['UserName']; ?></span></h2>
+    <h2>Welcome 
+        <span style="color:green">
+            <?php echo $_SESSION['UserName']; ?>
+        </span>
+    </h2>
     <br>
     <br>
     <div id="ChatBig">
@@ -31,11 +35,17 @@
                         url: 'InsertMessage.php',
                         data: {ChatText:ChatText},
                         success: function(){
+                            $("#ChatMessages").load("DisplayMessages.php");
                             $('#ChatText').val("");
                         }
                     });
                 } 
             });
+            
+            setInterval(function(){
+                $("#ChatMessages").load("DisplayMessages.php");
+            },1500);
+            $("#ChatMessages").load("DisplayMessages.php");
         });
     </script>
 </body>
