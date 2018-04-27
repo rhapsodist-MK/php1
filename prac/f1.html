@@ -1,34 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-        
-    </style>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
-    <button>get</button>
-   
-   
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
-        $(function(){
-            $('button').click(function(){
-                $.post(
-                    'demo_test3.php', 
-                    
-                    {
-                        name:"Donald Duck",
-                        city:"Duckburg"
-                    },
-                    function(data, status){
-                        alert('data : ' + data + "\nstatus : " + status);   
-                    }
-                );
-            });
-        });
-    </script>
+	<div class="container">
+		<form>
+			<div class="form-group">
+				<label for="usr">name :</label>
+				<input type="text" name="aa" class="form-control" id="usr">
+			</div>
+			<div class="form-group">
+				<label for="pwd">password :</label>
+				<input type="password" name="a" class="form-control" id="pwd">
+			</div>
+			<div class="form-group">
+				<label for="comment">comment</label>
+				<textarea rows="5" id="comment" class="form-control"></textarea>
+			</div>
+			<div class="checkbox">
+				<label><input type="checkbox" name="" value=""> option1</label>
+			</div>
+			<div class="checkbox">
+				<label><input type="checkbox" name="" disabled="">option2</label>
+			</div>
+			<label class="checkbox-inline">
+				<input type="checkbox" name="" value="0"> option 1
+			</label>
+			<label class="checkbox-inline">
+				<input type="checkbox" name="" value="0"> option 2
+			</label>
+			<div class="radio">
+				<label>
+					<input type="radio" name="optradio">option1
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="optradio">option2
+				</label>
+			</div>
+			<div class="radio disabled">
+				<label>
+					<input type="radio" name="optradio">option3
+				</label>
+			</div>
+			<div class="form-group">
+				<label for="sel1">select list</label>
+				<select class="form-control" id="sel1">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+				</select>
+				<br>
+				<label for="sel2">asdf</label>
+				<select class="form-control" multiple id="sel2">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+				</select>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
