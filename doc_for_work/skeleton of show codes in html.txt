@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- ... 중략 -->
+  
+<!-- Syntaxhighlighter Start -->
+<!-- 필요한 파일들을 html에서 적당히 불러줍니다. -->
+	<script type="text/javascript" src="./images/shCore.js"></script>
+	<script type="text/javascript" src="./images/shLegacy.js"></script>
+	<script type="text/javascript" src="./images/shBrushBash.js"></script>
+	<script type="text/javascript" src="./images/shBrushCpp.js"></script>
+	<script type="text/javascript" src="./images/shBrushCSharp.js"></script>
+	<script type="text/javascript" src="./images/shBrushCss.js"></script>
+	<script type="text/javascript" src="./images/shBrushGroovy.js"></script>
+	<script type="text/javascript" src="./images/shBrushJava.js"></script>
+	<script type="text/javascript" src="./images/shBrushJScript.js"></script>
+	<script type="text/javascript" src="./images/shBrushPlain.js"></script>
+	<script type="text/javascript" src="./images/shBrushSql.js"></script>
+	<script type="text/javascript" src="./images/shBrushXml.js"></script>
+	<link rel=stylesheet type=text/css href="./images/shCore.css">
+<!-- 테마는 적당히 골라서 css를 입혀줍니다. 전 shThemeRDark.css 이므로 shCoreDefault.css는 주석처리 -->
+<!-- <link rel="stylesheet" type="text/css" href="./images/shCoreDefault.css" /> -->
+	<link rel=stylesheet type=text/css href="./images/shThemeRDark.css">
+  
+<!-- 저는 툴바를 제거할 것이므로 false 설정을 해줍니다. -->
+	<script type="text/javascript">
+		SyntaxHighlighter.defaults['toolbar'] = false;
+		SyntaxHighlighter.all();
+	</script>
+</head>
+
+<!-- body 시작태그 안에 onload속성을 추가해줍니다. -->
+<body onload="dp.SyntaxHighlighter.HighlightAll('code');">
+	
+	<pre class="brush: java" >
+        ∼ 소스코드 내용
+	</pre>
+
+	<script class="brush: html" type=syntaxhighlighter><![CDATA[
+    	∼ 소스코드 내용	
+	]]></script>
+</body>
+</html>
