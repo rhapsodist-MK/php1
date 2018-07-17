@@ -1,0 +1,41 @@
+<h1>Run Rails on MacOS</h1>
+	<br>
+	<br>
+	<div>
+		<h3>1.Install Homebrew package manager</h3>
+		<h5>Homebrew 패키지 매니저를 이용하면 rbenv와 ruby-build를 쉽게 설치 할수 있다.</h5>
+		
+		<script class="brush: html" type=syntaxhighlighter><![CDATA[
+			<!-- Homebrew 설치 -->
+    		$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+    		<!-- Homebrew updqte -->
+    		$ brew doctor
+    		$ brew update
+    		$ brew -v
+		]]></script>
+		
+	</div>
+
+	<div>
+		<h3>2.Install Rbenv and ruby</h3>
+		<h5>MAC에는 Ruby가 설치 되어있지만 버전 컨트롤를 위해서 Rbenv가 필요하다</h5>
+		<h5>Rbenv를 사용하여 ruby를 설치한다</h5>
+		<h5>이후 거의 모든 명령어에서 rbenv exec 라는 명령어를 사용 하게 된다</h5>
+		<script class="brush: html" type=syntaxhighlighter><![CDATA[
+			$ brew install rbenv
+
+			<!-- 설치 가능한 ruby 버전 확인 -->
+			$ rbenv install -l
+
+			<!-- 설치할 루비 버전이 보이지 않는다면 플러그인 업그레이드가 필요 -->
+			$ brew upgrade ruby-build
+
+			<!-- 필요한 버전의 ruby를 설치하고 재실행 -->
+			$ rbenv install [버전] && rbenv rehash
+
+			<!-- 필요에 따라 global, local, shell 옵션을 이용하여 설정할 수 있다 -->
+			<!-- $ rbenv global 만 입력하면 현재 설정된 버전 확인가능 -->
+			$ rbenv global [버전]
+		]]></script>
+	</div>

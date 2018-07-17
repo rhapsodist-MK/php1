@@ -1,0 +1,8 @@
+
+-   Night Owl (Theme)
+
+-   Power Mode
+
+-   vscode-icons
+
+-   Korean Language Pack for vscode
