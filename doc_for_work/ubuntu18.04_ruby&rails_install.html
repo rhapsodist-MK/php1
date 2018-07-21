@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./images/shCore.js"></script>
+	<script type="text/javascript" src="./images/shLegacy.js"></script>
+	<script type="text/javascript" src="./images/shBrushBash.js"></script>
+	<script type="text/javascript" src="./images/shBrushCpp.js"></script>
+	<script type="text/javascript" src="./images/shBrushCSharp.js"></script>
+	<script type="text/javascript" src="./images/shBrushCss.js"></script>
+	<script type="text/javascript" src="./images/shBrushGroovy.js"></script>
+	<script type="text/javascript" src="./images/shBrushJava.js"></script>
+	<script type="text/javascript" src="./images/shBrushJScript.js"></script>
+	<script type="text/javascript" src="./images/shBrushPlain.js"></script>
+	<script type="text/javascript" src="./images/shBrushSql.js"></script>
+	<script type="text/javascript" src="./images/shBrushXml.js"></script>
+	<link rel=stylesheet type=text/css href="./images/shCore.css">
+	<link rel=stylesheet type=text/css href="./images/shThemeRDark.css">
+	<script type="text/javascript">
+		SyntaxHighlighter.defaults['toolbar'] = false;
+		SyntaxHighlighter.all();
+	</script>
+</head>
+<body onload="dp.SyntaxHighlighter.HighlightAll('code');">
+    <h2>Step 1 - Install rbenv and Dependencies</h2>
+	<script class="brush: html" type=syntaxhighlighter><![CDATA[
+        <!-- Step 1 - Install rbenv and Dependencies  -->
+
+        $ sudo apt update
+
+        $ sudo apt-get install nodejs
+
+        $ sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev libsqlite3-dev
+        <!-- libsqlite3-dev 설치 안될시 따로 설치 -->
+
+        $ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+
+        $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+
+        $ source ~/.bashrc
+
+        $ type rbenv
+    ]]></script>
+    
+    <h4>* result output</h4>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        rbenv is a function
+        rbenv ()
+        {
+            local command;
+            command="${1:-}";
+            if [ "$#" -gt 0 ]; then
+                shift;
+            fi;
+            case "$command" in
+                rehash | shell)
+                    eval "$(rbenv "sh-$command" "$@")"
+                ;;
+                *)
+                    command rbenv "$command" "$@"
+                ;;
+            esac
+        }
+    ]]></script>
+    
+    <h2>Step 2 - Installing Ruby with ruby-build</h2>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        <!-- Step 2 - Installing Ruby with ruby-build -->
+
+        $ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+        $ rbenv install -l
+
+        $ rbenv install 2.5.1
+
+        $ rbenv global 2.5.1
+
+        $ ruby -v
+    ]]></script>
+    
+    <h4>* result output</h4>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux]
+    ]]></script>
+
+
+    <h2>Step 3 - Working with Gems</h2>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        <!-- Step 3 - Working with Gems -->
+
+        $ echo "gem: --no-document" > ~/.gemrc
+
+        $ gem install bundler
+
+        $ gem env home
+    ]]></script>
+    
+    <h4>* result output</h4>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        /home/sammy/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0
+    ]]></script>
+
+    <h2>Step 4 - Installing Rails</h2>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        <!-- Step 4 - Installing Rails -->
+
+        $ gem install rails
+
+        $ rbenv rehash
+
+        $ rails -v
+    ]]></script>
+
+    <h4>* result output</h4>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        Rails 5.2.0
+    ]]></script>
+
+    <br>
+    <br>
+
+    <h2>Step 5 - Updating rbenv</h2>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        <!-- Step 5 - Updating rbenv -->
+
+        $ cd ~/.rbenv
+
+        $ git pull
+    ]]></script>
+
+
+    <h2>Step 6 - Uninstalling Ruby versions</h2>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        <!-- Step 6 - Uninstalling Ruby versions -->
+
+        $ rbenv uninstall [version]
+    ]]></script>
+
+    <h2>Step 7 - Uninstalling rbenv</h2>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        <!-- Step 7 - Uninstalling rbenv -->
+
+        $ nano ~/.bashrc
+
+        <!-- remove this part -->
+        export PATH="$HOME/.rbenv/bin:$PATH"
+        eval "$(rbenv init -)"
+
+        $ rm -rf `rbenv root`
+    ]]></script>
+</body>
+</html>
