@@ -1,0 +1,22 @@
+<h1>this is menu</h1>
+<%= render partial: "shared/menu", locals: {title:"Menu1"} %>
+<%= render partial: "shared/menu", locals: {title:"Menu2"} %>
+
+<div>
+    2 * 2 = <strong><%= 2 * 2 %></strong>
+    <br>
+    2 * 3 = <strong><%= 'hi' %></strong>
+</div>
+
+<% if 1+1 == 2 %>
+    <span>Correct!</span>
+<% else %>
+    <span>Wrong!</span>
+<%end%>
+
+<% ['aa', 'bb', 'cc', 'dd'].each do |name| %>
+    <span><%= name %></span>
+<% end %>
+
+<h1>현재시간</h1>
+<span><%= DateTime.now %></span>

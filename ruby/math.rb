@@ -166,9 +166,122 @@
 #     puts item
 # end
 
-for item in (5..10) do
-    puts item
-end
+# for item in (5..10) do
+#     puts item
+# end
 
 
 
+# 함수
+# def a3()
+#     puts('aaa')
+# end
+# a3()
+
+
+# def a3()
+#     return 'aa'
+# end
+# puts a3()
+
+
+# def a(num)
+#     return 'a' * num
+# end
+# puts a(100)
+
+
+# def make_string(str, num)
+#     return str * num
+# end
+# puts (make_string('abc', 100))
+
+
+# puts("input your id")
+# input_id = gets.chomp()
+# if login(input_id)
+#     puts('hello, ' + input_id)
+# else
+#     puts('who are you?')
+# end
+# def login(id)
+#     members = ['aa', 'bb', 'cc']
+#     for m in members do
+#         if m == id
+#             return true
+#         end
+#     end
+#     return false
+# end
+
+
+# 함수 괄호, return 생략 기능
+
+# def f1()
+#     return 'f1'
+# end
+# puts f1()
+# def f2
+#     return 'f2'
+# end
+# puts f2()
+# def f3
+#     return 'f3'
+# end
+# puts f3
+# def f4(a1)
+#     return a1
+# end
+# puts f4('f4')
+# def f5 a1   #한칸 띄우기
+#     return a1
+# end
+# puts f5('f5')
+# def f6 a1
+#     return a1
+# end
+# puts f6 'f6'
+# def f7
+#     'f7'    #return과 같음  
+# end
+# puts f7
+# def f8
+#     a = 1
+#     b = 2
+#     a + b
+# end
+# puts f8
+
+
+
+# block || <- 파이프사용가능
+
+# 5.times() {puts '5times'}
+# 2.times() {puts '2times'}
+#   함수    블럭
+
+# 3.upto(5) {puts '3 to 5 upto'}
+# 3.upto(6) {|i| puts i}
+
+# arr = ['A','B','C']
+# arr.each(){
+#     |item|
+#     puts item.downcase()
+# }
+# for value in arr
+#     puts value
+# end
+
+
+# arr = [1,2,5,4,3,34,39,50,28]
+# arr.delete_if(){|item|
+#     item > 7  #한줄인 경우 {}
+# }
+# puts arr
+
+
+# arr = [1,2,5,4,3,34,39,50,28]
+# arr.delete_if() do |item|
+#     item > 7  #2줄이상인 경우 do ~ end
+# end
+# puts arr
