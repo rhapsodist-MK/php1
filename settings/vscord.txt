@@ -14,3 +14,7 @@
 -   open-in-browser
     * html파일 웹브라우저에서 실행
     * ctrl + alt + o
+
+-   Markdown Preview Enhanced
+    * .md파일 Preview
+    * ctrl + k 후 v
