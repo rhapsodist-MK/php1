@@ -17,18 +17,30 @@
         </div>
         <ul class="menu">
           <a href="/">
-            <li class="item">Hello World</li>
+            <li class="item">HOME</li>
           </a>
           <%# <a href="/contact"> %>
           <%# <a href="/contacts/new"> %>
           <%= link_to new_contact_path do %>
             <li class="item">Contact</li>
           <% end %>
-          <%# </a> %>
+          <% if user_signed_in? %>
+            <li class="item"><%= current_user.name %></li>
+            <li class="item"><%= link_to 'Sign out', session_path(current_user), method: 'delete' %></li>
+            <% if current_user.admin %>
+              <li class="item"><%= link_to 'Contacts List', contacts_path %></li>
+            <% end %>
+          <% else %>
+            <li class="item"><%= link_to 'Sign in', new_session_path %></li>
+            <%= link_to new_user_path do %>
+              <li class="item"><%= link_to 'Sign up', new_user_path %></li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
     </div>
     <div id="wrapper">
+      <%= flash[:alert] %>
       <%= yield %>
     </div>
   </body>
