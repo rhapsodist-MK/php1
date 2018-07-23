@@ -23,6 +23,17 @@
 	</script>
 </head>
 <body onload="dp.SyntaxHighlighter.HighlightAll('code');">
+    <h2>* zsh 설치</h2>
+    <script class="brush: html" type=syntaxhighlighter><![CDATA[
+        $ sudo apt-get install zsh
+
+        $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/on-my-zsh/master/tools/install.sh)"
+
+        <!-- zsh 사용하다 보면 백그라운드에 프로세스 실행시 오류 발생 -->
+        <!-- .zshrc 파일에 아래 코드 추가 -->
+        unsetopt BG_NICE
+    ]]></script>
+
     <h2>Step 1 - Install rbenv and Dependencies</h2>
 	<script class="brush: html" type=syntaxhighlighter><![CDATA[
         <!-- Step 1 - Install rbenv and Dependencies  -->

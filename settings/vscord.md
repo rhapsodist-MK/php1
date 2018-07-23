@@ -1,4 +1,6 @@
-### 확장 ###
+#VS CODE Setting
+-----------------------------------------------
+##  *확장*
 -   Winter is Coming Theme
 
 -   vscode-icons
@@ -13,8 +15,9 @@
 
 -   open-in-browser
     * html파일 웹브라우저에서 실행
-    * ctrl + alt + o
+    * `ctrl + alt + o`
 
 -   Markdown Preview Enhanced
     * .md파일 Preview
-    * ctrl + k 후 v
+    * `ctrl + k`
+    * ` + v `
