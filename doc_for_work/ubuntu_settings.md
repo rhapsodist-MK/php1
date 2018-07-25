@@ -1,3 +1,9 @@
+###* setting .hyper
+```
+shell: 'C:\\Users\\minwo\\AppData\\Local\\Microsoft\\WindowsApps\\ubuntu1804.exe',
+shellArgs: [],
+```
+
 ###* install zsh, oh-my-zsh
 ```bash
 $ sudo apt-get install zsh
