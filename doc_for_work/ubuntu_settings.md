@@ -1,23 +1,3 @@
-###* setting .hyper
-```
-fontFamily: '"DejaVu Sans Mono for Powerline", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
-shell: 'C:\\Users\\minwo\\AppData\\Local\\Microsoft\\WindowsApps\\ubuntu1804.exe',
-shellArgs: [],
-bell: false,
-plugins: [
-  'hyperpower',
-  'hyper-electron-highlighter'
-],
-keymaps: {
-  'tab:new': 'ctrl+t',
-  'pane:close': 'ctrl+w',
-  'editor:copy': 'ctrl+c',
-  'editor:paste': 'ctrl+v',
-  'editor:selectAll': 'ctrl+a'
-}
-
-```
-
 ###* install zsh, oh-my-zsh
 ```bash
 $ sudo apt-get install zsh
