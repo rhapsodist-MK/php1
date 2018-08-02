@@ -1,6 +1,9 @@
 # beginner step
 
-###1.Trailhead Basics
+##!: 다시 안볼거
+##@: 다시 볼거
+
+###!1.Trailhead Basics
 
 ###2.Trailhead Playground Management
 
@@ -32,7 +35,7 @@
 
 ###16.Formulas & Validations
 
-###17.Lighning Flow
+###17.Lightning Flow
 
 ###18.Apex Basics & Database
 
@@ -56,7 +59,7 @@
 
 ###28.Salesforce Mobile App Customization
 
-###29.Salesforce Tchnology Model
+###29.Salesforce Technology Model
 
 ###30.Build a Suggestion Box App
 
@@ -80,90 +83,96 @@
 
 ###40.Lightning Component Core Concepts
 
-###41.Lightning Componnt Skills & Tools
+###41.Lightning Component Skills & Tools
 
 ###42.Lightning Component Tips & Gotchas
 
 ###43.Lightning Experience Basics
 
-###44.Lightning Experience Rollout Specialist
+###44.Lightning Experience Rollout
 
-###45.Lightning Design System
+###45.Lightning App Builder
 
-###46.Sales Colud - Quick Look
+###46.Lightning Experience Features
 
-###47.Salesforce Mobile SDK Basics
+###47.Lightning Experience Rollout Specialist
 
-###48.Application Lifecycle Management
+###48.Lightning Design System
 
-###49.Change Management
+###49.Sales Cloud - Quick Look
 
-###50.Custom Metadata Types
+###50.Salesforce Mobile SDK Basics
 
-###51.Salesforce Agile Basics
+###51.Application Lifecycle Management
 
-###52.Scrum and Kanban at Salesforce
+###52.Change Management
 
-###53.Git and GitHub Basics
+###53.Custom Metadata Types
 
-###54.Query GitHub Data Using BigQuery
+###54.Salesforce Agile Basics
 
-###55.Dreamforce Ready
+###55.Scrum and Kanban at Salesforce
 
-###56.Dreamforce & Next Steps
+###56.Git and GitHub Basics
 
-###57.Build a Battle Station App
+###57.Query GitHub Data Using BigQuery
 
-###58.Alexa Development Basics
+###58.Dreamforce Ready
 
-###59.Build an Alexa Skill
+###59.Dreamforce & Next Steps
 
-###60.UX Research Basics
+###60.Build a Battle Station App
 
-###61.UX personas for Salesforce
+###61.Alexa Development Basics
 
-###62.UX Prototyping Basics
+###62.Build an Alexa Skill
 
-###63.Atlassian Agile Basics
+###63.UX Research Basics
 
-###64.Atlassian Overview of Agile Frameworks
+###64.UX personas for Salesforce
 
-###65.AppExchange App Development
+###65.UX Prototyping Basics
 
-###66.AppExchange App Strategy
+###66.Atlassian Agile Basics
 
-###67.AppExchange Partner Business Planning
+###67.Atlassian Overview of Agile Frameworks
 
-###68.Writing Style
+###68.AppExchange App Development
 
-###69.Consulting Partner Basics
+###69.AppExchange App Strategy
 
-###70.Public Speaking Skills
+###70.AppExchange Partner Business Planning
 
-###71.Salesforce Ohana Culture
+###71.Writing Style
 
-###72.Storytelling & Communication
+###72.Consulting Partner Basics
 
-###73.Trust and Influence
+###73.Public Speaking Skills
 
-###74.Visualforce & Lighting Experience
+###74.Salesforce Ohana Culture
 
-###75.Build a Visualforce App with the Lightning Design System
+###75.Storytelling & Communication
 
-###76.Apex Integration Services
+###76.Trust and Influence
 
-###77.Visualforce Mobile
+###77.Visualforce & Lighting Experience
 
-###78.API Basics
+###78.Build a Visualforce App with the Lightning Design System
 
-###79.User Interface API
+###79.Apex Integration Services
 
-###80.App Development with Salesforce DX
+###80.Visualforce Mobile
 
-###81.Salesforce DX Development Model
+###81.API Basics
 
-###82.Asynchronous Apex
+###82.User Interface API
 
-###83.Apex Specialist
+###83.App Development with Salesforce DX
 
-###84.Apex Metadata API
+###84.Salesforce DX Development Model
+
+###85.Asynchronous Apex
+
+###86.Apex Specialist
+
+###87.Apex Metadata API
